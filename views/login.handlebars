@@ -1,0 +1,50 @@
+<form class="login-form col-12 col-md-8 col-lg-6">
+  <div>
+    <label for="login-form">email:</label>
+    <input type="text" id="login-form" />
+  </div>
+  <div>
+    <label for="pass-form">password:</label>
+    <input type="password" id="pass-form" />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-info">login</button>
+  </div>
+</form>
+<span>Dont have account? </span>
+<a href="/signup" class="signup-redirect-btn">Signup here</a>
+
+
+
+<script>
+  const doLogin=async (email, password)=>{
+    if (email && password) {
+   const res = await fetch('/api/users/login', {
+     method: 'post',
+     body: JSON.stringify({
+       email,
+       password
+     }),
+     headers: { 'Content-Type': 'application/json' }
+   });
+
+   if (res.ok) {
+     document.location.replace('/');
+   } else {
+     console.log(res)
+   }
+ }
+ }
+async function  loginHandler(event) {
+
+  event.preventDefault();
+  const email = document.querySelector('#login-form').value.trim();
+  const password = document.querySelector('#pass-form').value.trim();
+doLogin(email, password)
+}
+document.querySelector('.login-form').addEventListener('submit',  loginHandler);
+
+
+
+
+</script>

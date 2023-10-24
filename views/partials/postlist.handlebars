@@ -1,0 +1,31 @@
+<div class="post">
+
+  <div class="post-wrap">
+
+    <div class="p-1">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/post/{{id}}">{{title}}</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            
+            Post by -
+            {{user.username}}</h6>
+          <p class="post-date">Date: {{getformatedDate created_at}}</p>
+          <p class="card-text post-des">{{substring post_description}}</p>
+          <p class="card-text">
+            
+            {{!-- if comment array not empty --}}
+            {{comments.length}}
+
+            {{getSforComment "comment" comments.length}}
+            
+            </p>
+            
+          <a href="/post/{{id}}" class="card-link">Read More</a>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

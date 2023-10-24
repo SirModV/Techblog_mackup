@@ -1,0 +1,12 @@
+<div class="post-list row no-gutter">
+
+{{!-- loop through all post list --}}
+  {{#each posts as |post|}}
+
+  <li class="col-12 col-md-4 col-xxl-3">
+    {{!-- render all posts to postlist page --}}
+    {{> postlist post }}
+  </li>
+  {{/each}}
+
+</div>

@@ -1,0 +1,91 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <header class="py-3">
+        <div class="container d-flex justify-content-center">
+          <div class="col-6">
+            <h1>
+              <a class="text-white" href="/">Tech Blog</a>
+            </h1>
+          </div>
+          <div class="col-6">
+            <nav class="nav-item">
+
+              
+{{!-- show Dashboard & logout if user logged in --}}
+              {{#if loggedIn}}
+                <a class="text-white" href="/dashboard">Dashboard</a>
+                <button
+                  id="logout"
+                  class="ml-3 btn text-red"
+                >Logout</button>
+
+                {{!--  login menu if user not logged in --}}
+              {{else}}
+                <a class="text-white" href="/login">Login</a>
+              {{/if}}
+            </nav>
+          </div>
+
+        </div>
+      </header>
+
+      <div class="container">
+
+        <main class="main-content-body">
+          {{{body}}}
+        </main>
+      </div>
+
+      {{!-- this is footer section --}}
+
+      <footer class="footer">
+        &copy; 2023 Tech Blog
+      </footer>
+    </div>
+
+{{!-- load logout js script if user logged in --}}
+
+    {{#if loggedIn}}
+
+      <script>
+
+ 
+document.querySelector('#logout').addEventListener('click', async()=> {
+  const res = await fetch('/api/users/logout', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  if (res.ok) {
+    document.location.replace('/');
+  } else {
+    alert(res);
+  }
+});
+
+      </script>
+    {{/if}}
+
+
+  </body>
+
+</html>

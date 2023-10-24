@@ -1,0 +1,16 @@
+<div class="comments col-12 col-md-6 mb-3">
+
+  {{!-- loop thru the cmt --}}
+  {{#each this}}
+  <section class="comment">
+    
+    <div class="text">
+      {{comment}}
+    </div>
+
+    <div class="comment-div">
+      {{user.username}} on {{getformatedDate created_at}}
+    </div>
+  </section>
+  {{/each}}
+</div>

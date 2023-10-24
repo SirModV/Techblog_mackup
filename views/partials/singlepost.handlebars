@@ -1,0 +1,21 @@
+<article class="post">
+  <div class="title">
+    <a href="/post/{{id}}">{{title}}</a>
+  </div>
+  <div class="post-author text-muted">
+    by {{user.username}} 
+    on {{getformatedDate created_at}}
+  </div>
+  <div class="my-2">
+    <span>
+      
+      {{post_description}}
+      
+      </span>
+  </div>
+
+  <div class="comment-div">
+    <a href="/post/{{id}}">{{comments.length}} {{getSforComment "comment" comments.length}}</a>
+  </div>
+</article>
+
